@@ -50,35 +50,28 @@ All students from Grade 4+ will get weekly hands-on computer sessions.
   },
 ];
 
-type Props = {
-  params: {
-    slug: string;
-  };
-};
-
-export default function BlogPost({ params }: Props) {
+export default async function BlogPost({ params }: { params: { slug: string } }) {
   const post = posts.find((p) => p.slug === params.slug);
+
   if (!post) return notFound();
 
   return (
     <section className="max-w-3xl mx-auto px-6 py-20 md:py-28 bg-white shadow-md rounded-xl mt-8">
-      {/* Title */}
       <h1 className="text-4xl font-extrabold text-green-700 mb-4 leading-snug text-center">
         {post.title}
       </h1>
 
-      {/* Date */}
       <div className="flex items-center justify-center text-gray-500 mb-8 text-sm gap-2">
         <FaCalendarAlt className="text-green-600" />
         <time>{post.date}</time>
       </div>
 
-      {/* Content */}
-      <article className="prose prose-green prose-lg max-w-none text-gray-800 leading-relaxed">
+      <article
+        className="prose prose-green prose-lg max-w-none text-gray-800 leading-relaxed whitespace-pre-wrap"
+      >
         {post.content}
       </article>
 
-      {/* Bottom Line */}
       <div className="mt-10 border-t pt-6 text-center text-sm text-gray-400">
         Alfurqan Modern School © 2025 — All rights reserved.
       </div>
